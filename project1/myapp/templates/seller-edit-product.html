@@ -1,0 +1,138 @@
+{% extends 'seller-header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+</head>
+
+<body>
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Edit Product</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Edit Product</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-lg-6" align="center">
+						<h3>Edit Product</h3>
+						{% if msg %}
+							<b style="color:blue;">{{msg}}</b>
+						{% endif %}
+						<form class="row login_form" action="{% url 'seller-edit-product' pk=product.pk %}" method="post" id="contactForm" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="col-md-12 form-group">
+								<select class="form-control" name="product_brand">
+									{% if product.product_brand == "Puma" %}
+										<option>----Select Product Brand----</option>
+										<option value="Puma" selected>Puma</option>
+										<option value="Adidas">Adidas</option>
+										<option value="Nike">Nike</option>
+										<option value="Bata">Bata</option>
+									{% elif product.product_brand == "Adidas" %}
+										<option>----Select Product Brand----</option>
+										<option value="Puma">Puma</option>
+										<option value="Adidas" selected>Adidas</option>
+										<option value="Nike">Nike</option>
+										<option value="Bata">Bata</option>
+									{% elif product.product_brand == "Nike" %}
+										<option>----Select Product Brand----</option>
+										<option value="Puma">Puma</option>
+										<option value="Adidas">Adidas</option>
+										<option value="Nike" selected>Nike</option>
+										<option value="Bata">Bata</option>
+									{% elif product.product_brand == "Bata" %}
+										<option>----Select Product Brand----</option>
+										<option value="Puma">Puma</option>
+										<option value="Adidas">Adidas</option>
+										<option value="Nike">Nike</option>
+										<option value="Bata" selected>Bata</option>
+									{% endif %}
+									
+								</select>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="product_price" value="{{product.product_price}}">
+							</div>
+							<div class="col-md-12 form-group">
+								<select class="form-control" name="product_size">
+									{% if product.product_size == "7" %}
+										<option>----Select Product Size----</option>
+										<option value="7" selected>7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+									{% elif product.product_size == "8" %}
+										<option>----Select Product Size----</option>
+										<option value="7">7</option>
+										<option value="8" selected>8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+									{% elif product.product_size == "9" %}
+										<option>----Select Product Size----</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9" selected>9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+									{% elif product.product_size == "10" %}
+										<option>----Select Product Size----</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10" selected>10</option>
+										<option value="11">11</option>
+									{% elif product.product_size == "11" %}
+										<option>----Select Product Size----</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11" selected>11</option>
+									{% endif %}
+									
+								</select>
+							</div>
+
+							<div class="col-md-12 form-group">
+								<img src="{{product.product_pic.url}}" width="100px" height="100px">
+							</div>
+							
+							<div class="col-md-12 form-group">
+								<input type="file" class="form-control" id="name" name="product_pic">
+							</div>
+							
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">Update Product</button>
+								
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+
+</body>
+
+</html>
+{% endblock %}

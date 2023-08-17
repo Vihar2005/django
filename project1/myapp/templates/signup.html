@@ -1,0 +1,115 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+</head>
+
+<body>
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Sign Up</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Sign Up</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="{% static 'img/login.jpg' %}" alt="">
+							<div class="hover">
+								<h4>New to our website?</h4>
+								<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+								<a class="primary-btn" href="{% url 'signup' %}">Create an Account</a>
+							</div>
+					</div>
+				</div>
+				<div class="col-lg-6" align="center">
+						<h3>Sign Up</h3>
+						{% if msg %}
+							<b style="color:blue;">{{msg}}</b>
+						{% endif %}
+						<form class="row login_form" action="{% url 'signup' %}" method="post" id="contactForm">
+							{% csrf_token %}
+							<div class="col-md-12 form-group">
+								<select class="form-control" name="usertype">
+									<option>----Select User Type----</option>
+									<option value="buyer">Buyer</option>
+									<option value="seller">Seller</option>
+								</select>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="fname" placeholder="First Name">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="lname" placeholder="Last Name">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Email">
+								<span id="email_error" style="color:red;"></span>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="mobile" placeholder="Mobile">
+							</div>
+							<div class="col-md-12 form-group">
+								<textarea class="form-control" id="name" name="address" placeholder="Address"></textarea>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="name" name="password" placeholder="Password">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="name" name="cpassword" placeholder="Confirm Password">
+							</div>
+							
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">Sign Up</button>
+								
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+	<script>
+          $("#email").change(function(){
+            var email=$(this).val();
+            
+            $.ajax({
+              url: '/ajax/validate_email/',
+              data: {
+                'email': email
+              },
+              dataType: 'json',
+              success: function (data) {
+                if (data.is_taken) {
+                  /*document.getElementById("email").style.border="5px solid red";*/
+                  document.getElementById("email_error").innerHTML="This Email ID Is Already Registered"
+                }else{
+                  document.getElementById("email_error").innerHTML="";
+                }
+              }
+            });
+          });
+
+        </script>
+</body>
+
+</html>
+{% endblock %}
