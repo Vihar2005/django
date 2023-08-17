@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -126,3 +127,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STRIPE_PUBLIC_KEY='pk_test_51NaLOSSJMDFXJF58v9uAVACKsfLrbHHT7z8kKb822ZV8ipDQRiZQWhSflG660GKxMjQhJXmJWvEQZPqbxUOyiUGA00ymCvAwMF'
+STRIPE_PRIVATE_KEY='sk_test_51NaLOSSJMDFXJF585HW8Nc7jVovp2QDwGlnZewvaoioJ7s6mBqYK81dGIxo9DrqFZi6AoO7VVjaOBAcQmww2zBdg00HrFFD9ox'
+
+SESSION_EXPIRE_SECONDS = 60  # 1 hour
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY_GRACE_PERIOD = 1
+
+SESSION_TIMEOUT_REDIRECT = '/login'

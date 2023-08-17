@@ -27,6 +27,7 @@
       color: black;
     }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -130,6 +131,9 @@
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'cart' %}">Cart({{request.session.cart_count}})</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'myorder' %}">My Order</a>
+                      </li>
                        <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">logout</a>
                       </li>
@@ -165,7 +169,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a href="#" class="icons">
+                    <a href="{% url 'profile' %}" class="icons">
                       <i class="ti-user" aria-hidden="true"></i>
                     </a>
                   </li>

@@ -35,7 +35,9 @@
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><input type="text" name="email"></td>
+				<td><input type="text" id="email" name="email" placeholder="Email">
+					<span id="email_error" style="color:red;"></span>
+				</td>
 			</tr>
 			<tr>
 				<td>Mobile</td>
@@ -49,7 +51,6 @@
 				<td>Gender</td>
 				<td><input type="radio" name="gender" value="male">male
 					<input type="radio" name="gender" value="female">female
-					<input type="radio" name="gender" value="other">other
 				</td>
 			</tr>
 			<tr>
@@ -61,6 +62,10 @@
 				<td><input type="password" name="cpassword"></td>
 			</tr>
 			<tr>
+				<td>Profile Picture</td>
+				<td><input type="file" name="profile_pic" ></td>
+			</tr>
+			<tr>
 				<td colspan="2" align="center">
 					<input type="submit" name="action" value="Sign Up" class="btn btn-primary">
 				</td>
@@ -70,6 +75,28 @@
 	</form>
 		
 </center>
+	<script>
+          $("#email").change(function(){
+            var email=$(this).val();
+            
+            $.ajax({
+              url: '/ajax/validate_email/',
+              data: {
+                'email': email
+              },
+              dataType: 'json',
+              success: function (data) {
+                if (data.is_taken) {
+                  /*document.getElementById("email").style.border="5px solid red";*/
+                  document.getElementById("email_error").innerHTML="This Email ID Is Already Registered"
+                }else{
+                  document.getElementById("email_error").innerHTML="";
+                }
+              }
+            });
+          });
+
+    </script>
 </body>
 </html>
 {% endblock%}

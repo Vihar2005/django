@@ -20,7 +20,7 @@
               <p>Very us move be blessed multiply night</p>
             </div>
             <div class="page_link">
-              <a href="index.html">Home</a>
+              <a href="{% url 'index' %}">Home</a>
               <a href="blog.html">Blog </a>
               <a href="single-blog.html">Blog Details</a>
             </div>
@@ -227,7 +227,11 @@
 									</div>
 									<div class="comment-form">
 											<h4>Leave a Reply</h4>
-											<form class="form-contact comment_form" action="#" id="commentForm">
+                      {% if msg %}
+                        <b style="color:blue;">{{msg}}</b>
+                      {% endif %}
+											<form class="form-contact comment_form" action="{% url 'single-blog' %}" id="commentForm">
+                        {% csrf_token %}
                         <div class="row">
                           <div class="col-12">
                             <div class="form-group">
@@ -241,7 +245,7 @@
                           </div>
                           <div class="col-sm-6">
                             <div class="form-group">
-                              <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                              <input class="form-control" name="email" id="email" type="email" placeholder="Enter Email">
                             </div>
                           </div>
                           <div class="col-12">
@@ -319,7 +323,7 @@
                           <div class="media post_item">
                               <img src="{% static 'img/blog/popular-post/post1.jpg' %}" alt="post">
                               <div class="media-body">
-                                  <a href="single-blog.html">
+                                  <a href="#">
                                       <h3>From life was you fish...</h3>
                                   </a>
                                   <p>January 12, 2019</p>
@@ -328,7 +332,7 @@
                           <div class="media post_item">
                               <img src="{% static 'img/blog/popular-post/post2.jpg' %}" alt="post">                              
                               <div class="media-body">
-                                  <a href="single-blog.html">
+                                  <a href="#">
                                       <h3>The Amazing Hubble</h3>
                                   </a>
                                   <p>02 Hours ago</p>
@@ -337,7 +341,7 @@
                           <div class="media post_item">
                               <img src="{% static 'img/blog/popular-post/post3.jpg' %}" alt="post">                              
                               <div class="media-body">
-                                  <a href="single-blog.html">
+                                  <a href="#">
                                       <h3>Astronomy Or Astrology</h3>
                                   </a>
                                   <p>03 Hours ago</p>
@@ -346,7 +350,7 @@
                           <div class="media post_item">
                               <img src="{% static 'img/blog/popular-post/post4.jpg' %}" alt="post">
                               <div class="media-body">
-                                  <a href="single-blog.html">
+                                  <a href="#">
                                       <h3>Asteroids telescope</h3>
                                   </a>
                                   <p>01 Hours ago</p>

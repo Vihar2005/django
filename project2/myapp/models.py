@@ -9,6 +9,7 @@ class User(models.Model):
 	address=models.TextField()
 	gender=models.CharField(max_length=100)
 	password=models.CharField(max_length=100)
+	profile_pic=models.ImageField(upload_to="profile_pic/",default="")
 	usertype=models.CharField(max_length=100,default="buyer")
 
 	def __str__(self):
@@ -46,3 +47,14 @@ class Cart(models.Model):
 
 	def __str__(self):
 		return self.user.fname+ " - "+self.product.product_brand
+
+
+class Blog(models.Model):
+	comment=models.CharField(max_length=100)
+	name=models.CharField(max_length=50)
+	email=models.EmailField()
+	website=models.CharField(max_length=50)
+
+
+	def __str__(self):
+		return self.name
