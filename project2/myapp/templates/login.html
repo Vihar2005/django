@@ -20,7 +20,9 @@
 			
 			<tr>
 				<td>Email</td>
-				<td><input type="email" name="email" placeholder="Email"></td>
+				<td><input type="email" name="email" id="email" placeholder="Email"><br>
+					<span id="email_error" style="color: red;"></span>
+				</td>
 			</tr>
 			<tr>
 				<td>Password</td>
@@ -36,6 +38,28 @@
 		</table>
 	</form>	
 </center>
+	<script>
+          $("#email").change(function(){
+            var email=$(this).val();
+            
+            $.ajax({
+              url: '/ajax/validate_email/',
+              data: {
+                'email': email
+              },
+              dataType: 'json',
+              success: function (data) {
+                if (!data.is_taken) {
+                  /*document.getElementById("email").style.border="5px solid red";*/
+                  document.getElementById("email_error").innerHTML="This Email ID Is Not Registered"
+                }else{
+                  document.getElementById("email_error").innerHTML="";
+                }
+              }
+            });
+          });
+
+    </script>
 </body>
 </html>
 {% endblock%}

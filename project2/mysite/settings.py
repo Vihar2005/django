@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_project',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -136,4 +140,4 @@ SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY_GRACE_PERIOD = 1
 
-SESSION_TIMEOUT_REDIRECT = '/login'
+SESSION_TIMEOUT_REDIRECT = '/'

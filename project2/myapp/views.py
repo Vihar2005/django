@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import User,Product,Wishlist,Cart,Blog
+from .models import User,Product,Wishlist,Cart,Blog,Contact
 import requests
 import random
 import stripe
@@ -77,7 +77,17 @@ def checkout(request):
 	return render(request,'checkout.html')
 
 def contact(request):
-	return render(request,'contact.html')
+	if request.method=="POST":
+		Contact.objects.create(
+				name=request.POST['name'],
+				email=request.POST['email'],
+				mobile=request.POST['mobile'],
+				message=request.POST['message']
+			)
+		msg="Contact Saved Successfully"
+		return render(request,'contact.html',{'msg':msg})
+	else:
+		return render(request,'contact.html')
 
 def elements(request):
 	return render(request,'elements.html')
