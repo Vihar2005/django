@@ -82,7 +82,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
             <div class="row w-100 mr-0">
-              <div class="col-lg-7 pr-0">
+              <div class="col-lg-6 pr-0">
                 <ul class="nav navbar-nav center_nav pull-right">
                   <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
@@ -95,10 +95,10 @@
                         <a class="nav-link" href="{% url 'category' %}">Shop Category</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'single-product' %}">Product Details</a>
+                        <a class="nav-link" href="#">Product Details</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'checkout' %}">Product Checkout</a>
+                        <a class="nav-link" href="{% url 'cart' %}">Product Checkout</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'cart' %}">Shopping Cart</a>
@@ -151,17 +151,12 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                   </li>
+                 
                 </ul>
               </div>
 
-              <div class="col-lg-5 pr-0">
+              <div class="col-lg-6 pr-0">
                 <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-search" aria-hidden="true"></i>
-                    </a>
-                  </li>
-
                   <li class="nav-item">
                     <a href="{% url 'cart' %}" class="icons">
                       <i class="ti-shopping-cart"></i>
@@ -178,6 +173,22 @@
                     <a href="{% url 'wishlist' %}" class="icons">
                       <i class="ti-heart" aria-hidden="true"></i>
                     </a>
+                  </li>
+                   &nbsp; &nbsp; &nbsp; 
+                   <li class="nav-item">
+                    <a class="nav-link" href="{% url 'base' %}">Weather</a>
+                  </li>
+                  &nbsp; &nbsp; &nbsp;
+                  <li class="nav-item">
+                    <div class="input-group">
+                      <div class="form-outline">
+                        <input type="search" id="form1" class="form-control" placeholder="Search" />
+                      <!-- <label class="form-label" for="form1"></label> -->
+                      </div>
+                        <button type="button" class="btn btn-primary">
+                          <i class="fa-solid fa-magnifying-glass fa-xs" style="color: #0a5ae6;"></i>
+                        </button>
+                    </div>
                   </li>
                 </ul>
               </div>

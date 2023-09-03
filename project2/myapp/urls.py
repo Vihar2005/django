@@ -37,4 +37,5 @@ urlpatterns = [
     path('cancel.html/', views.cancel,name='cancel'),
     path('myorder/',views.myorder,name='myorder'),
     path('ajax/validate_email/',views.validate_signup,name='validate_email'),
+    path('base/',views.base,name='base'),
 ]

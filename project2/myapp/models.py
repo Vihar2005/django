@@ -51,9 +51,9 @@ class Cart(models.Model):
 
 class Blog(models.Model):
 	comment=models.CharField(max_length=100)
-	name=models.CharField(max_length=50)
+	name=models.CharField(max_length=150)
 	email=models.EmailField()
-	website=models.CharField(max_length=50)
+	website=models.CharField(max_length=150)
 
 
 	def __str__(self):
