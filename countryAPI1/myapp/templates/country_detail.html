@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Country Detail</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="row justify-content-center my-5">
+        <div class="col-md-5">
+            <div class="mt-4 p-5 bg-success text-white rounded mb-3">
+                <h1>Country Detail</h1>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    {% if country %}
+                        <div class="card-text"><h2>{{ country.name.common }}</h2></div>
+                        <div class="card-text float-end"><img src="{{ country.flags.png }}" alt="Flag" width="100"></div>
+                        <div class="card-text"><h6>Capital: {{ country.capital }}</h6></div>
+                        <div class="card-text"><h6>Population: {{ country.population }}</h6></div>
+                        <div class="card-text"><h6>Region: {{ country.region }}</h6></div>
+                        <div class="card-text"><h6>Subregion: {{ country.subregion }}</h6></div>
+                        <div class="card-text"><h6>Timezones: {{ country.timezones|join:", " }}</h6></div>
+                        <div class="card-text"><h6>Currencies:
+                            {% for currency_code, currency_info in country.currencies.items %}
+                                {{ currency_info.name }} ({{ currency_info.symbol }}),
+                            {% endfor %}</h6></div>        
+                        <h4>Map Location</h4>
+                        <iframe width="100%" height="350" frameborder="0" style="border:0"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox={{ country.latlng.1 }}%2C{{ country.latlng.0 }}%2C{{ country.latlng.1 }}%2C{{ country.latlng.0 }}&amp;layer=mapnik"></iframe>
+                        <a href="/" class="btn btn-secondary">Go Home</a>
+                    {% else %}
+                        <p>Country information not available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
